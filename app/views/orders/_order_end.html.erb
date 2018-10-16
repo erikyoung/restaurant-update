@@ -1,0 +1,11 @@
+<div class="booyah-box col-xs-10 col-xs-offset-1">
+	<h1>Thank you for your order</h1>
+	<h2>Order information</h2>
+	<p><strong>Item name: </strong><%= @order.food_item.name %></p>
+	<p><strong>Total price: </strong><%= @order.food_item.price * @order.quantity %> </p>
+	<h2>Customer information</h2>
+	<p><strong>Name: </strong><%= @order.name %>
+	<p><strong>Address: </strong><%= @order.address %>
+	<p><strong>Phone: </strong><%= @order.phone %></p>
+	<p><strong>Order at: </strong><%= @order.created_at.strftime("%A %d, %B %Y, %H:%M") %>
+</div>

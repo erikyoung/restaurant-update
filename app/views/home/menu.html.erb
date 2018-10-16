@@ -1,0 +1,51 @@
+<div class="container">
+<br />
+
+
+<div class="search-bar">
+
+  <form class="form" align="right">
+    <%= form_tag(menu_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Find your food" %>
+        <%= submit_tag "Search", :name => nil, :style => "color:blue;"  %>
+    <% end %>
+  </form>
+</div>
+
+
+
+<div class="btn btn-group">
+	<% @sections.each do |section| %>
+	<%= link_to section.name, menu_path(section_id: section.id), class: "btn #{params[:section_id] == section.id.to_s ? 'btn-primary' : 'btn-secondary'}" %>
+<% end %>
+</div>
+
+<div class="card card-block">
+	<%= form_tag nil, method: 'get' do %>
+	 <%= hidden_field_tag :section, params[:section] %>
+		<div class="form-inline">
+			<div class="form-group">
+				
+			<%= select_tag :sort_column, options_for_select([['Name', 'name'], ['Price', 'price']]), class: 'form-control' %>
+			<%= select_tag :sort_direction, options_for_select([['Ascending', 'asc'], ['Descending', 'dsc']]), class: "form-control" %> <br />
+			<%= submit_tag "sort", class: 'btn btn-primary' %>
+		</div>
+<% end %>
+</div>
+<div class="food-items col-xs-10 col-xs-offset-1">
+<% if @all_food_items.present? %>
+	<table class="table">
+			<% @all_food_items.each do |item| %>
+			<tr>
+				<td><%= link_to item.name, food_item_path(item.id) %></td>
+				<td><%= number_to_currency item.price %></td>
+				<td><%= item.description %></td>
+				<td><%= link_to "Add to order", new_order_path(food_item_id: item.id) %> 
+				<td><%= image_tag item.image_url_or_default, :size => "200x150" %></td> 
+			</tr>
+		<% end %>
+		</div>
+  </table>
+<% end %>
+</div>
+

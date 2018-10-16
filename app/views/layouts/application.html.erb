@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Restaurant</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+  <div id="flex-content-container">
+
+  <nav class="sticky-top navbar-toggleable-md navbar-inverse bg-custom">
+      
+      <a class="navbar-brand" href="<%= root_path %>">Food N'Stuff</a>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+          <li class="nav-item active">
+            <a class="nav-link" <%= link_to 'Book Something', contact_us_path %> <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+  </nav> 
+      	<%= yield %>
+  </div><!--flex-container-->
+    <div id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-sm-6">
+            <b>Contact</b>
+            <br />
+            youngerik26@gmail.com
+            <br />
+            3628 Shaffer Rd
+            <br />
+            Rock Creek, Ohio, 44084
+          </div><!-- div class col-12 -->
+          <div class="col-12 col-sm-6 social">
+            <b>Social</b>
+            <br />
+            <br />
+              <%= link_to 'https://github.com/erikyoung' do %>
+              <span class="fab fa-github-square fa-2x social-button"></span>
+              <% end %>
+              <%= link_to 'https://www.facebook.com/erik.young.923' do %>
+              <span class="fab fa-facebook-square fa-2x social-button"></span>
+              <% end %>
+              <%= link_to 'https://twitter.com/youngerik26' do %>
+              <span class="fab fa-twitter-square fa-2x social-button"></span>
+              <% end %> 
+              <%= link_to 'https://medium.com/@erikyoung_58444' do %> 
+              <span class="fab fa-medium fa-2x social-button"></span>
+              <% end %> 
+          </div><!-- col-12 -->
+        </div><!-- row -->
+      </div> <!-- div container -->
+   </div><!-- footer -->
+  </body>
+</html>
